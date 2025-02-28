@@ -49,9 +49,7 @@ const CartItem = ({ onContinueShopping }) => {
         ))}
       </div>
       <button onClick={onContinueShopping}>Continue Shopping</button>              
-      <button className="checkout-button" onClick={handleCheckoutClick}>
-      Checkout  
-      </button>
+      <button onClick={handleCheckoutClick}>Checkout</button>
       {messageVisible && <p>Coming Soon</p>}
     </div> 
   );
