@@ -242,12 +242,6 @@ function ProductList() {
 
     const cartItemCount = cart.items ? cart.items.length : 0; // Ensure cart items are counted correctly
 
-    const plantsArray = [...]; // Keeping the same plant data
-
-    const styleObj = {...};
-    const styleObjUl = {...};
-    const styleA = {...};
-
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
