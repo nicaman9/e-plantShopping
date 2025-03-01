@@ -9,10 +9,25 @@ const CartItem = ({ onContinueShopping }) => {
 
 
     const parseItemCostToInteger = (itemCost) => {
-        if (!itemCost) return 0; // Handle missing cost values
-        return parseInt(itemCost.replace(/[^0-9]/g, ""), 10) || 0; // Extract numeric values only
+        /*
+            Remove currency symbol before multiplication.
+            Otherwise, NaN returned.
+            Improve in future: Use regex to remove all possible currency symbols?
+        */
+        return parseInt(itemCost.replace('$', ''), 10);
     };
 
+    // Calculate total amount for all products in the cart
+    const calculateTotalAmount = () => {
+        let totalCost = 0;
+
+        cart.forEach((item) => {
+            const itemCost = parseItemCostToInteger(item.cost);
+            totalCost += itemCost * item.quantity;
+        });
+
+        return totalCost;
+    };
 
     const handleContinueShopping = (e) => {
         onContinueShopping(e);
@@ -45,11 +60,12 @@ const CartItem = ({ onContinueShopping }) => {
     };
 
     // Calculate total cost based on quantity for an item
-    const calculateTotalAmount = () => {
-        return cart.reduce((total, item) => {
-            const itemCost = parseItemCostToInteger(item.cost);
-            return total + (isNaN(itemCost) ? 0 : itemCost * item.quantity);
-        }, 0);
+    const calculateTotalCost = (item) => {
+        let totalCost = 0;
+        const itemCost = parseItemCostToInteger(item.cost);
+        totalCost = item.quantity * itemCost;
+
+        return totalCost;
     };
 
     return (
