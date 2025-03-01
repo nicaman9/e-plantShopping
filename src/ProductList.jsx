@@ -234,65 +234,68 @@ function ProductList() {
     fontSize: '30px',
     textDecoration: 'none',
    }
-    const handleAddToCart = (product) => {
-        dispatch(addItem({ ...product, quantity: 1 }));
-    };
+   const handleAddToCart = (product) => {
+    dispatch(addItem({ ...product, quantity: 1 }));
+};
 
-    const handleCartClick = (e) => {
-        e.preventDefault();
-        setShowCart(true);
-    };
+const handleCartClick = (e) => {
+    e.preventDefault();
+    setShowCart(true);
+};
 
-    const handleContinueShopping = (e) => {
-        e.preventDefault();
-        setShowCart(false);
-    };
+const handleContinueShopping = (e) => {
+    e.preventDefault();
+    setShowCart(false);
+};
 
-    return (
-        <div>
-            <div className="navbar" style={styleObj}>
-                <div className="tag">
-                    <div className="luxury">
-                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                        <a href="/" style={{ textDecoration: 'none' }}>
-                            <div>
-                                <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
-                                <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <a href="#" onClick={handleCartClick} style={{ color: 'white', fontSize: '30px', textDecoration: 'none' }}>
-                        🛒
+return (
+    <div>
+        <div className="navbar" style={styleObj}>
+            <div className="tag">
+                <div className="luxury">
+                    <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
+                    <a href="https://nicaman9.github.io/e-plantShopping/" style={{ textDecoration: 'none' }}>
+                        <div>
+                            <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
+                            <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
+                        </div>
                     </a>
                 </div>
             </div>
-
-            {!showCart ? (
-                <div className="product-grid">
-                    {plantsArray.map((category, index) => (
-                        <div key={index}>
-                            <h1>{category.category}</h1>
-                            <div className="product-list">
-                                {category.plants.map((plant, plantIndex) => (
-                                    <div className="product-card" key={plantIndex}>
-                                        <img className="product-image" src={plant.image} alt={plant.name} />
-                                        <div className="product-title">{plant.name}</div>
-                                        <div className="product-description">{plant.description}</div>
-                                        <div className="product-price">{plant.cost}</div>
-                                        <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
-            )}
+            <div>
+                <a href="/productlist" style={{ color: 'white', fontSize: '20px', textDecoration: 'none', margin: '0 20px' }}>Plants</a>
+            </div>
+            <div>
+                <a href="#" onClick={handleCartClick} style={{ color: 'white', fontSize: '30px', textDecoration: 'none' }}>
+                    🛍️
+                </a>
+            </div>
         </div>
-    );
+
+        {!showCart ? (
+            <div className="product-grid">
+                {plantsArray.map((category, index) => (
+                    <div key={index}>
+                        <h1>{category.category}</h1>
+                        <div className="product-list">
+                            {category.plants.map((plant, plantIndex) => (
+                                <div className="product-card" key={plantIndex}>
+                                    <img className="product-image" src={plant.image} alt={plant.name} />
+                                    <div className="product-title">{plant.name}</div>
+                                    <div className="product-description">{plant.description}</div>
+                                    <div className="product-price">{plant.cost}</div>
+                                    <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        ) : (
+            <CartItem onContinueShopping={handleContinueShopping} />
+        )}
+    </div>
+);
 }
 
 export default ProductList;
