@@ -263,7 +263,7 @@ return (
                 </div>
             </div>
             <div>
-            <a href="https://nicaman9.github.io/e-plantShopping/#get-started" style={{ color: 'white', fontSize: '20px', textDecoration: 'none', margin: '0 20px' }}>Plants</a>
+            <a href="https://nicaman9.github.io/e-plantShopping/#" style={{ color: 'white', fontSize: '20px', textDecoration: 'none', margin: '0 20px' }}>Plants</a>
             </div>
             <div>
                 <a href="#" onClick={handleCartClick} style={{ color: 'white', fontSize: '30px', textDecoration: 'none' }}>
