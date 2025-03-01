@@ -13,17 +13,6 @@ const CartItem = ({ onContinueShopping }) => {
         return parseInt(itemCost.replace(/[^0-9]/g, ""), 10) || 0; // Extract numeric values only
     };
 
-    // Calculate total amount for all products in the cart
-    const calculateTotalAmount = () => {
-        let totalCost = 0;
-
-        cart.forEach((item) => {
-            const itemCost = parseItemCostToInteger(item.cost);
-            totalCost += itemCost * item.quantity;
-        });
-
-        return totalCost;
-    };
 
     const handleContinueShopping = (e) => {
         onContinueShopping(e);
