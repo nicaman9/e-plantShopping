@@ -240,7 +240,7 @@ function ProductList() {
         textDecoration: 'none',
     }
 
-    const cartItemCount = cart.items ? cart.items.length : 0; // Ensure cart items are counted correctly
+    const cartItemCount = Array.isArray(cart.items) ? cart.items.length : 0;
 
     const handleCartClick = (e) => {
         e.preventDefault();
